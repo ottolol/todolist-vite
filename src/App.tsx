@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { TodolistItem } from "./components/TodolistItem";
 
-function App() {
-  const [count, setCount] = useState(0)
+export type TasksPropsType = {
+  id: number;
+  title: string;
+  isDone: boolean;
+};
 
+const tasks1: TasksPropsType[] = [
+  { id: 1, title: "HTML&CSS", isDone: true },
+  { id: 2, title: "JS", isDone: true },
+  { id: 3, title: "ReactJS", isDone: false },
+  { id: 4, title: "Redux", isDone: false },
+  { id: 5, title: "Typescript", isDone: false },
+  { id: 6, title: "RTK query", isDone: false },
+];
+
+const tasks2: TasksPropsType[] = [
+  // { id: 1, title: "Hello world", isDone: true },
+  // { id: 2, title: "I am Happy", isDone: false },
+  // { id: 3, title: "Yo", isDone: false },
+];
+
+export const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    <div className="app">
+      <TodolistItem title="What to learn" tasks={tasks1} date="01.01.2025" />
+      <TodolistItem title="Songs" tasks={tasks2} />
+    </div>
+  );
+};
